@@ -10,10 +10,21 @@
     <modelVersion>4.0.0</modelVersion>
 
     <artifactId>service-hosp</artifactId>
+    <packaging>jar</packaging>
 
     <properties>
         <maven.compiler.source>8</maven.compiler.source>
         <maven.compiler.target>8</maven.compiler.target>
     </properties>
 
-</project>
+    <dependencies>
+
+        <dependency>
+            <groupId>com.lxCompany</groupId>
+            <artifactId>module</artifactId>
+            <version>0.0.1-SNAPSHOT</version>
+        </dependency>
+
+    </dependencies>
+
+            </project>

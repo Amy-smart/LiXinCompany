@@ -11,6 +11,7 @@
 
     <artifactId>service-client</artifactId>
     <packaging>pom</packaging>
+
     <modules>
         <module>service-cmn-client</module>
         <module>service-hosp-client</module>
