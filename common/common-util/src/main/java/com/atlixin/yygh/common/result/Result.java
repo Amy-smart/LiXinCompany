@@ -1,4 +1,4 @@
-package com.atlixin.yygh.util.result;
+package com.atlixin.yygh.common.result;
 
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;

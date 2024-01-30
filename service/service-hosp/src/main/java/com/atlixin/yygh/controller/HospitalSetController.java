@@ -1,9 +1,10 @@
 package com.atlixin.yygh.controller;
 
+import com.atlixin.yygh.common.exception.YyghException;
 import com.atlixin.yygh.service.HospitalSetService;
 import com.atlixin.yygh.model.hosp.HospitalSet;
-import com.atlixin.yygh.util.result.Result;
-import com.atlixin.yygh.util.util.MD5;
+import com.atlixin.yygh.common.result.Result;
+import com.atlixin.yygh.util.MD5;
 import com.atlixin.yygh.vo.hosp.HospitalSetQueryVo;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
@@ -58,7 +59,7 @@ public class HospitalSetController {
     }
     // 4 添加医院设置
     @PostMapping("/saveHospSet")
-    public Result saveHospSet(@RequestBody(required = true)HospitalSet hospitalSet) {
+    public Result saveHospSet(@RequestBody HospitalSet hospitalSet) {
         Random random = new Random();
         hospitalSet.setStatus(0);
         hospitalSet.setSignKey(MD5.encrypt((System.currentTimeMillis())+ ""+random.nextInt(1000)));
@@ -78,7 +79,7 @@ public class HospitalSetController {
 
     // 6 修改医院设置
     @PostMapping("/updateHospSet")
-    public Result updateHospSet(@RequestBody(required = true)HospitalSet hospitalSet) {
+    public Result updateHospSet(@RequestBody HospitalSet hospitalSet) {
         boolean updateById = hospitalSetService.updateById(hospitalSet);
         if (updateById) {
             return Result.ok();
@@ -96,7 +97,30 @@ public class HospitalSetController {
         } else {
             return Result.fail();
         }
+    }
 
+    // 8 医院锁定和解锁
+    @PostMapping("/lockHospitalSet/{id}/{status}")
+    public Result lockHospitalSet(@PathVariable Long id,
+                                  @PathVariable Integer status) {
+        HospitalSet hospitalSet = hospitalSetService.getById(id);
+        hospitalSet.setStatus(status);
+        boolean flag = hospitalSetService.updateById(hospitalSet);
+        if (flag) {
+            return Result.ok();
+        } else {
+            return Result.fail();
+        }
+    }
+
+    // 9 发送签名密钥
+    @PutMapping("/sendKey/{id}")
+    public Result sendKey(@PathVariable Long id) {
+        HospitalSet hospitalSet = hospitalSetService.getById(id);
+        hospitalSet.getSignKey();
+        hospitalSet.getHoscode();
+        // TODO 短信发送
+        return Result.ok();
     }
 
 }

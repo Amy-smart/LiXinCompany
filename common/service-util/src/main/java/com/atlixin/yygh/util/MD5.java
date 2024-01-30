@@ -1,4 +1,4 @@
-package com.atlixin.yygh.util.util;
+package com.atlixin.yygh.util;
 
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;

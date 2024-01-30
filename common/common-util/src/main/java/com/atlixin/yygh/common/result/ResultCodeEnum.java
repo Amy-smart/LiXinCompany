@@ -1,4 +1,4 @@
-package com.atlixin.yygh.util.result;
+package com.atlixin.yygh.common.result;
 
 import lombok.Getter;
 
