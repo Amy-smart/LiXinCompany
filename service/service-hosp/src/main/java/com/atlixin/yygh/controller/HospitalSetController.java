@@ -1,10 +1,9 @@
 package com.atlixin.yygh.controller;
 
-import com.atlixin.yygh.common.exception.YyghException;
 import com.atlixin.yygh.service.HospitalSetService;
 import com.atlixin.yygh.model.hosp.HospitalSet;
 import com.atlixin.yygh.common.result.Result;
-import com.atlixin.yygh.util.MD5;
+import com.atlixin.yygh.config.MD5;
 import com.atlixin.yygh.vo.hosp.HospitalSetQueryVo;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
@@ -17,6 +16,7 @@ import java.util.Random;
 
 @RestController
 @RequestMapping("/admin/hosp/hospitalSet")
+@CrossOrigin
 public class HospitalSetController {
     @Autowired
     HospitalSetService hospitalSetService;
@@ -33,11 +33,12 @@ public class HospitalSetController {
     public Result deleteHostSetById(@PathVariable Long id) {
 
         boolean flag = hospitalSetService.removeById(id);
-        if (flag) {
-            return Result.ok();
-        } else {
-            return Result.fail();
-        }
+//        if (flag) {
+//            return Result.ok();
+//        } else {
+//            return Result.fail();
+//        }
+        return Result.ok();
     }
     // 3 分页查询
     @PostMapping("/findPageHospSet/{currentPage}/{limit}")
@@ -64,11 +65,12 @@ public class HospitalSetController {
         hospitalSet.setStatus(0);
         hospitalSet.setSignKey(MD5.encrypt((System.currentTimeMillis())+ ""+random.nextInt(1000)));
         boolean save = hospitalSetService.save(hospitalSet);
-        if (save) {
-            return Result.ok();
-        } else {
-            return Result.fail();
-        }
+//        if (save) {
+//            return Result.ok();
+//        } else {
+//            return Result.fail();
+//        }
+        return Result.ok();
     }
     // 5 根据ID获取医院设置
     @PostMapping("/findHospSetById/{id}")
@@ -92,11 +94,12 @@ public class HospitalSetController {
     @DeleteMapping("/batchRemove")
     public Result batchRemoveHospitalSet(@RequestBody List<Long> list) {
         boolean falg = hospitalSetService.removeByIds(list);
-        if (falg) {
-            return Result.ok();
-        } else {
-            return Result.fail();
-        }
+//        if (falg) {
+//            return Result.ok();
+//        } else {
+//            return Result.fail();
+//        }
+        return Result.ok();
     }
 
     // 8 医院锁定和解锁
