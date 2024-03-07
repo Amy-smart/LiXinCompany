@@ -3,4 +3,7 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.atlixin.yygh.mapper.DicMapper">
 
+<!--    <select id="selectByParentIdDictList" resultType="com.atlixin.yygh.model.cmn.Dict">-->
+<!--        SELECT * FROM dict WHERE parent_id = #{id}-->
+<!--    </select>-->
 </mapper>

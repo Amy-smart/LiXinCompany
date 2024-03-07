@@ -18,13 +18,6 @@
     </properties>
 
     <dependencies>
-
-        <dependency>
-            <groupId>com.lxCompany</groupId>
-            <artifactId>module</artifactId>
-            <version>0.0.1-SNAPSHOT</version>
-        </dependency>
-
     </dependencies>
 
 </project>

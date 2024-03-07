@@ -18,21 +18,13 @@
     </properties>
 
     <dependencies>
+        <!-- starter-test -->
         <dependency>
-            <groupId>com.lxCompany</groupId>
-            <artifactId>module</artifactId>
-            <version>0.0.1-SNAPSHOT</version>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+            <version>2.7.10</version>
+            <scope>test</scope>
         </dependency>
     </dependencies>
-
-<!--    <build>-->
-<!--        <finalName>service-cmn</finalName>-->
-<!--        <plugins>-->
-<!--            <plugin>-->
-<!--                <groupId>org.springframework.boot</groupId>-->
-<!--                <artifactId>spring-boot-maven-plugin</artifactId>-->
-<!--            </plugin>-->
-<!--        </plugins>-->
-<!--    </build>-->
 
 </project>
