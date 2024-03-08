@@ -8,6 +8,7 @@ import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletResponse;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -19,6 +20,12 @@ public class DictController {
 
     @Autowired
     DictService dictService;
+
+    // 导出功能实现
+    @GetMapping("/exportData")
+    public void exportData(HttpServletResponse response) {
+        dictService.exportDic(response);
+    }
 
     // 查询子数据
     @ApiOperation(value = "根据数据id查询子数据列表")
